@@ -1,11 +1,17 @@
 Spaceship a = new Spaceship();
 Stars[] starry = new Stars[400];
+Asteroid[] b = new Asteroid[10];
+
 public void setup() 
 {
   size(500, 500);
   for (int i = 0; i < starry.length; i++)
   {
     starry[i] = new Stars();
+  }
+  for(int nI = 0; nI < b.length; nI++)
+  {
+    b[nI] = new Asteroid();
   }
 }
 public void draw() 
@@ -15,9 +21,13 @@ public void draw()
   {
     starry[i].show();
   }
+  for ( int nI = 0; nI < b.length; nI++)
+  {
+    b[nI].show();
+    b[nI].move();
+  }
   a.show();
   a.move();
-  
 }
 
 public void keyPressed()
@@ -41,5 +51,9 @@ public void keyPressed()
   if (key == 'w')
   {
     a.accelerate(0.4);
+  }
+  if (key == ' ')
+  {
+    
   }
 }
