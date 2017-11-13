@@ -1,6 +1,7 @@
 Spaceship a = new Spaceship();
 Stars[] starry = new Stars[400];
-Asteroid[] b = new Asteroid[10];
+ArrayList <Asteroid> b = new ArrayList <Asteroid>();
+
 
 public void setup() 
 {
@@ -9,9 +10,10 @@ public void setup()
   {
     starry[i] = new Stars();
   }
-  for(int nI = 0; nI < b.length; nI++)
+  for (int n = 0; n <=12; n++)
   {
-    b[nI] = new Asteroid();
+    Asteroid nn = new Asteroid();
+    b.add(nn);
   }
 }
 public void draw() 
@@ -21,10 +23,19 @@ public void draw()
   {
     starry[i].show();
   }
-  for ( int nI = 0; nI < b.length; nI++)
+  for ( int nI = 0; nI < b.size(); nI++)
   {
-    b[nI].show();
-    b[nI].move();
+    b.get(nI).show();
+
+    //int d = dist((b.get(nI).getX()), (b.get(nI).getY()), (a.getX()), (a.getY()))
+      //if (d > 20)
+    {
+      b.get(nI).move();
+    } 
+    //else
+    {
+      //b.remove(nI);
+    }
   }
   a.show();
   a.move();
@@ -54,6 +65,5 @@ public void keyPressed()
   }
   if (key == ' ')
   {
-    
   }
 }
