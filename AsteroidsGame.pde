@@ -27,14 +27,14 @@ public void draw()
   {
     b.get(nI).show();
 
-    //int d = dist((b.get(nI).getX()), (b.get(nI).getY()), (a.getX()), (a.getY()))
-      //if (d > 20)
+    int d = dist((b.get(nI).getX()), (b.get(nI).getY()), (a.getX()), (a.getY()))
+    if (d > 20)
     {
       b.get(nI).move();
     } 
-    //else
+    else
     {
-      //b.remove(nI);
+      b.remove(nI);
     }
   }
   a.show();
