@@ -23,12 +23,15 @@ public void draw()
   {
     starry[i].show();
   }
-  for ( int nI = 0; nI < b.size(); nI++)
+  for (int nI = b.size()-1; nI >= 0; nI--)
   {
     b.get(nI).show();
-
-    int d = dist((b.get(nI).getX()), (b.get(nI).getY()), (a.getX()), (a.getY()))
-    if (d > 20)
+    int bx = b.get(nI).getX();
+    int by = b.get(nI).getY();
+    int ax = a.getX();
+    int ay = a.getY();
+    int d = (int)(dist(bx, by, ax, ay));
+    if (d > 25)
     {
       b.get(nI).move();
     } 
