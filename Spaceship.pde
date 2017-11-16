@@ -1,7 +1,7 @@
-class Spaceship extends Floater  
+class SpaceShip extends Floater  
 {   
   private int myColor2, myColor3;
-  public Spaceship()
+  public SpaceShip()
    {
     corners = 4;
     int [] xS = {-8, 16, -8, -2};

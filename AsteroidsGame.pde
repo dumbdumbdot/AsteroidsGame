@@ -1,7 +1,7 @@
-Spaceship a = new Spaceship();
+SpaceShip a = new SpaceShip();
 Stars[] starry = new Stars[400];
 ArrayList <Asteroid> b = new ArrayList <Asteroid>();
-
+ArrayList <Bullet> c = new ArrayList <Bullet>();
 
 public void setup() 
 {
@@ -34,14 +34,18 @@ public void draw()
     if (d > 25)
     {
       b.get(nI).move();
-    } 
-    else
+    } else
     {
       b.remove(nI);
     }
   }
   a.show();
   a.move();
+  for ( int i = 0; i < c.size(); i++)
+  {
+    c.get(i).show();
+    c.get(i).move();
+  }
 }
 
 public void keyPressed()
@@ -68,5 +72,7 @@ public void keyPressed()
   }
   if (key == ' ')
   {
+    Bullet x = new Bullet(a);
+    c.add(x);
   }
 }
