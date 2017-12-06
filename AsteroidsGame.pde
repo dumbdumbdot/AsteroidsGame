@@ -31,7 +31,7 @@ public void draw()
     int ax = a.getX();
     int ay = a.getY();
     int d = (int)(dist(bx, by, ax, ay));
-    if (d > 25)
+    if (d > 20)
     {
       b.get(nI).move();
     } else
@@ -45,34 +45,49 @@ public void draw()
   {
     c.get(i).show();
     c.get(i).move();
+    
+    for (int i2 = b.size()-1; i2 >= 0; i2--)
+    {
+      int cx = c.get(i).getX();
+      int cy = c.get(i).getY();
+      int bx = b.get(i2).getX();
+      int by = b.get(i2).getY();
+      int d2 = (int)(dist(cx, cy, bx, by));
+      if ( d2 < 20)
+      {
+        b.remove(i2);
+        c.remove(i);
+        break;
+      }
+    }
+    }
   }
-}
 
-public void keyPressed()
-{
-  if (key == 's')
+  public void keyPressed()
   {
-    a.setX((int)(Math.random()*500)+1);
-    a.setY((int)(Math.random()*500)+1);
-    a.setDirectionX(0);
-    a.setDirectionY(0);
-    a.setPointDirection((int)(Math.random()*360)+1);
+    if (key == 's')
+    {
+      a.setX((int)(Math.random()*500)+1);
+      a.setY((int)(Math.random()*500)+1);
+      a.setDirectionX(0);
+      a.setDirectionY(0);
+      a.setPointDirection((int)(Math.random()*360)+1);
+    }
+    if (key == 'a')
+    {
+      a.turn(-10);
+    }
+    if (key == 'd')
+    {
+      a.turn(10);
+    }
+    if (key == 'w')
+    {
+      a.accelerate(0.4);
+    }
+    if (key == ' ')
+    {
+      Bullet x = new Bullet(a);
+      c.add(x);
+    }
   }
-  if (key == 'a')
-  {
-    a.turn(-10);
-  }
-  if (key == 'd')
-  {
-    a.turn(10);
-  }
-  if (key == 'w')
-  {
-    a.accelerate(0.4);
-  }
-  if (key == ' ')
-  {
-    Bullet x = new Bullet(a);
-    c.add(x);
-  }
-}
