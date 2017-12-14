@@ -2,10 +2,11 @@ SpaceShip a = new SpaceShip();
 Stars[] starry = new Stars[400];
 ArrayList <Asteroid> b = new ArrayList <Asteroid>();
 ArrayList <Bullet> c = new ArrayList <Bullet>();
-
+PFont f;
+int score = 0;
 public void setup() 
 {
-  size(500, 500);
+  size(500, 500); 
   for (int i = 0; i < starry.length; i++)
   {
     starry[i] = new Stars();
@@ -15,10 +16,12 @@ public void setup()
     Asteroid nn = new Asteroid();
     b.add(nn);
   }
+  f = createFont("Arial",16,true);
 }
 public void draw() 
 {
   background(0);
+  
   for (int i = 0; i < starry.length; i++)
   {
     starry[i].show();
@@ -37,17 +40,24 @@ public void draw()
     } else
     {
       b.remove(nI);
+      a.setX(-20);
+      a.setY(0);
+      textFont(f,50);
+      fill(255);
+      textAlign(CENTER);
+      text("Game Over", 200, 250);
+      break;
     }
   }
-  a.show();
-  a.move();
+
   for ( int i = 0; i < c.size(); i++)
   {
     c.get(i).show();
     c.get(i).move();
-    
+
     for (int i2 = b.size()-1; i2 >= 0; i2--)
     {
+      
       int cx = c.get(i).getX();
       int cy = c.get(i).getY();
       int bx = b.get(i2).getX();
@@ -55,39 +65,47 @@ public void draw()
       int d2 = (int)(dist(cx, cy, bx, by));
       if ( d2 < 20)
       {
+        
         b.remove(i2);
         c.remove(i);
+        score++;
         break;
+        
       }
     }
-    }
   }
+  textFont(f, 50);
+  fill(255, 228, 226);
+  text(score, 25, 475);
+  a.show();
+  a.move();
+}
 
-  public void keyPressed()
+public void keyPressed()
+{
+  if (key == 's')
   {
-    if (key == 's')
-    {
-      a.setX((int)(Math.random()*500)+1);
-      a.setY((int)(Math.random()*500)+1);
-      a.setDirectionX(0);
-      a.setDirectionY(0);
-      a.setPointDirection((int)(Math.random()*360)+1);
-    }
-    if (key == 'a')
-    {
-      a.turn(-10);
-    }
-    if (key == 'd')
-    {
-      a.turn(10);
-    }
-    if (key == 'w')
-    {
-      a.accelerate(0.4);
-    }
-    if (key == ' ')
-    {
-      Bullet x = new Bullet(a);
-      c.add(x);
-    }
+    a.setX((int)(Math.random()*500)+1);
+    a.setY((int)(Math.random()*500)+1);
+    a.setDirectionX(0);
+    a.setDirectionY(0);
+    a.setPointDirection((int)(Math.random()*360)+1);
   }
+  if (key == 'a')
+  {
+    a.turn(-10);
+  }
+  if (key == 'd')
+  {
+    a.turn(10);
+  }
+  if (key == 'w')
+  {
+    a.accelerate(0.4);
+  }
+  if (key == ' ')
+  {
+    Bullet x = new Bullet(a);
+    c.add(x);
+  }
+}

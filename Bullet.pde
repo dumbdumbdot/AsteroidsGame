@@ -2,7 +2,7 @@
 {
   public Bullet(SpaceShip theShip)
   {
-    myCenterX = theShip.getX() + 15;
+    myCenterX = theShip.getX();
     myCenterY = theShip.getY();
     myPointDirection = theShip.getPointDirection();
     double dRadians = myPointDirection*(Math.PI/180);
