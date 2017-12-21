@@ -42,10 +42,10 @@ public void draw()
       b.remove(nI);
       a.setX(-20);
       a.setY(0);
-      textFont(f,50);
-      fill(255);
-      textAlign(CENTER);
-      text("Game Over", 200, 250);
+      //textFont(f,50);
+      //fill(255);
+      //textAlign(CENTER);
+      //text("Game Over", 200, 250);
       break;
     }
   }
